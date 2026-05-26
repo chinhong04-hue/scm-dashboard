@@ -76,7 +76,7 @@ export default async function ProcurementPage() {
           </thead>
           <tbody className="divide-y divide-gray-50">
             {orders?.map((order) => {
-              const supplier = order.suppliers as { name: string } | null
+              const supplier = (order.suppliers as unknown) as { name: string } | null
               return (
                 <tr key={order.id} className="hover:bg-gray-50 transition-colors">
                   <td className="px-4 py-3 font-mono text-xs font-semibold text-blue-600">

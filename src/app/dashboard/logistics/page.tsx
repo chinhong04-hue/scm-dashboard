@@ -80,8 +80,8 @@ export default async function LogisticsPage() {
             </thead>
             <tbody className="divide-y divide-gray-50">
               {deliveries.map((d) => {
-                const po = d.purchase_orders as { po_number: string } | null
-                const so = d.sales_orders as { so_number: string } | null
+                const po = (d.purchase_orders as unknown) as { po_number: string } | null
+                const so = (d.sales_orders as unknown) as { so_number: string } | null
                 const ref = po?.po_number ?? so?.so_number ?? '—'
                 const refColor = po ? 'text-blue-600' : 'text-orange-600'
                 return (

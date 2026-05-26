@@ -73,7 +73,7 @@ export default async function WarehousePage() {
             </thead>
             <tbody className="divide-y divide-gray-50">
               {transactions.map((t) => {
-                const product = t.products as { sku: string; name: string } | null
+                const product = (t.products as unknown) as { sku: string; name: string } | null
                 const cfg = typeConfig[t.transaction_type] ?? typeConfig['Adjustment']
                 const Icon = cfg.icon
                 return (

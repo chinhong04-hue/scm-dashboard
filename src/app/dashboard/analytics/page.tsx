@@ -15,7 +15,7 @@ export default async function AnalyticsPage() {
 
   const spendingMap: Record<string, number> = {}
   poData?.forEach((po) => {
-    const supplier = po.suppliers as { name: string } | null
+    const supplier = (po.suppliers as unknown) as { name: string } | null
     const name = supplier?.name ?? 'Unknown'
     spendingMap[name] = (spendingMap[name] ?? 0) + (po.total_cost ?? 0)
   })
@@ -30,7 +30,7 @@ export default async function AnalyticsPage() {
 
   const categoryMap: Record<string, number> = {}
   invData?.forEach((inv) => {
-    const product = inv.products as { category: string } | null
+    const product = (inv.products as unknown) as { category: string } | null
     const cat = product?.category ?? 'Other'
     categoryMap[cat] = (categoryMap[cat] ?? 0) + inv.quantity_on_hand
   })
