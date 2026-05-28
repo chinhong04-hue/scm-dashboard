@@ -21,7 +21,7 @@ export function SpendingBySupplierChart({ data }: { data: { name: string; total:
           interval={0}
         />
         <YAxis tick={{ fontSize: 11, fill: '#6b7280' }} tickFormatter={(v) => `RM ${(v/1000).toFixed(0)}k`} />
-        <Tooltip formatter={(value: number) => [`RM ${value.toLocaleString('en-MY', { minimumFractionDigits: 2 })}`, 'Total Spend']} />
+        <Tooltip formatter={(value) => [`RM ${Number(value).toLocaleString('en-MY', { minimumFractionDigits: 2 })}`, 'Total Spend']} />
         <Bar dataKey="total" fill="#3b82f6" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
@@ -46,7 +46,7 @@ export function InventoryByCategoryChart({ data }: { data: { name: string; value
             <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
           ))}
         </Pie>
-        <Tooltip formatter={(value: number) => [value, 'Qty on Hand']} />
+        <Tooltip formatter={(value) => [value, 'Qty on Hand']} />
       </PieChart>
     </ResponsiveContainer>
   )
