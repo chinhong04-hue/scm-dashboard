@@ -47,7 +47,7 @@ export default async function InventoryPage() {
           </thead>
           <tbody className="divide-y divide-gray-50">
             {inventory?.map((item) => {
-              const product = item.products as {
+              const product = (item.products as unknown) as {
                 sku: string; name: string; category: string;
                 unit_of_measure: string; reorder_point: number; safety_stock: number
               }
