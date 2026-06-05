@@ -39,7 +39,7 @@ export function InventoryByCategoryChart({ data }: { data: { name: string; value
           cy="45%"
           outerRadius={90}
           dataKey="value"
-          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+          label={({ name, percent }) => `${name} ${((percent ?? 0) * 100).toFixed(0)}%`}
           labelLine={true}
         >
           {data.map((_, i) => (
